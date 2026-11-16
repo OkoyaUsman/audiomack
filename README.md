@@ -41,17 +41,12 @@ pip install requests
 
 ## Usage
 
-Run the script with an Audiomack URL as an argument:
+Run the script with an Audiomack URL set inside main.py:
 
 ```bash
-python main.py <audiomack_url>
+python main.py
 ```
 
-### Example
-
-```bash
-python main.py https://audiomack.com/artist/song-name
-```
 
 ### Output
 
@@ -61,9 +56,7 @@ The downloaded audio file will be saved in the `downloads` directory with a file
 
 ## How It Works
 
-1. **URL Validation**: The script validates that the provided URL is from `audiomack.com` and contains a valid path.
-
-2. **OAuth Authentication**: 
+1. **OAuth Authentication**: 
    - Generates a random nonce for each request
    - Creates an OAuth timestamp
    - Builds OAuth parameters including consumer key, signature method, and version
@@ -92,7 +85,6 @@ audiomack/
 ### Main Functions
 
 - `main()`: Entry point that handles argument parsing, API authentication, and file download
-- `audiomack_url(value: str)`: Validates that the input URL is a valid Audiomack URL
 - `generate_nonce(length: int)`: Generates a random nonce for OAuth authentication
 - `generate_signature(params: dict)`: Creates HMAC-SHA1 OAuth signature from parameters
 
@@ -102,13 +94,6 @@ audiomack/
 - **URL Parsing**: Uses `urllib.parse` to extract and validate URL components
 - **File Handling**: Uses `pathlib.Path` for cross-platform file path management
 
-## Error Handling
-
-The script includes validation for:
-- Invalid URL schemes (must be http:// or https://)
-- Non-Audiomack domains
-- Missing URL paths
-- Invalid URL format
 
 ## Requirements
 
